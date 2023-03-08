@@ -35,8 +35,7 @@ class GoogleVision {
       [String scope = 'https://www.googleapis.com/auth/cloud-vision']) async {
     GoogleVision yt = GoogleVision();
 
-    tokenGenerator =
-        JwtGenerator(credentialsFile: credentialsFile, scope: scope, dio: dio);
+    tokenGenerator = JwtGenerator(credentialsFile: credentialsFile, scope: scope, dio: dio);
 
     await _confirmToken();
 
@@ -63,8 +62,7 @@ class GoogleVision {
 
   /// Draw a box on the supplied [Painter] around detected object using
   /// [NormalizedVertex] values.
-  static void drawAnnotationsNormalized(
-      Painter painter, List<NormalizedVertex> vertices,
+  static void drawAnnotationsNormalized(Painter painter, List<NormalizedVertex> vertices,
       {String color = 'red', int thickness = 3}) {
     final topLeft = vertices.first;
 
@@ -76,13 +74,13 @@ class GoogleVision {
       (bottomRight.x * painter.width).toInt(),
       (bottomRight.y * painter.height).toInt(),
       RgbColor.name(color),
+      thickness: thickness,
     );
   }
 
   /// Draw a box on the supplied [Painter] around the detected object using
   /// [Vertex] values.
-  static void drawAnnotations(Painter painter, List<Vertex> vertices,
-      {String color = 'red', int thickness = 3}) {
+  static void drawAnnotations(Painter painter, List<Vertex> vertices, {String color = 'red', int thickness = 3}) {
     final topLeft = vertices.first;
 
     final bottomRight = vertices[2];
@@ -93,13 +91,12 @@ class GoogleVision {
       bottomRight.x.toInt(),
       bottomRight.y.toInt(),
       RgbColor.name(color),
+      thickness: thickness,
     );
   }
 
   /// Draw [text] on the [Painter] at the [x] and [y] position.
-  static void drawText(Painter painter, int x, int y, String text,
-          {String color = 'red'}) =>
-      painter.drawString(
+  static void drawText(Painter painter, int x, int y, String text, {String color = 'red'}) => painter.drawString(
         x,
         y,
         text,
