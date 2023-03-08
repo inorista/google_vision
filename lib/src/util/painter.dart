@@ -22,27 +22,20 @@ class Painter {
 
   int get width => _decodedBytes!.width;
 
-  factory Painter.fromFilePath(String filePath) =>
-      Painter.fromFile(File(filePath));
+  factory Painter.fromFilePath(String filePath) => Painter.fromFile(File(filePath));
 
-  factory Painter.fromFile(File imageFile) =>
-      Painter(imageFile.readAsBytesSync());
+  factory Painter.fromFile(File imageFile) => Painter(imageFile.readAsBytesSync());
 
-  factory Painter.fromDecodedImage(img.Image image) =>
-      Painter(Uint8List.fromList(img.encodeJpg(image).toList()));
+  factory Painter.fromDecodedImage(img.Image image) => Painter(Uint8List.fromList(img.encodeJpg(image).toList()));
 
-  factory Painter.fromBase64(String encodedImage) =>
-      Painter(base64Decode(encodedImage));
+  factory Painter.fromBase64(String encodedImage) => Painter(base64Decode(encodedImage));
 
-  factory Painter.fromJson(Map<String, dynamic> json) =>
-      Painter.fromBase64(json['content'] as String);
+  factory Painter.fromJson(Map<String, dynamic> json) => Painter.fromBase64(json['content'] as String);
 
-  Map<String, dynamic> toJson() =>
-      <String, dynamic>{'content': base64Encode(encodedBytes)};
+  Map<String, dynamic> toJson() => <String, dynamic>{'content': base64Encode(encodedBytes)};
 
   /// Draw a rectangle on the underlying image.
-  void drawRectangle(int x1, int y1, int x2, int y2, Color color,
-      {num thickness = 1}) {
+  void drawRectangle(int x1, int y1, int x2, int y2, Color color, {num thickness = 1}) {
     img.drawRect(
       _decodedBytes!,
       x1: x1,
@@ -54,12 +47,12 @@ class Painter {
         color.toRgbColor().g as int,
         color.toRgbColor().b as int,
       ),
+      thickness: thickness,
     );
   }
 
   /// Draw a line on the underlying image.
-  void drawLine(int x1, int y1, int x2, int y2, Color color,
-      {bool antialias = false, num thickness = 1}) {
+  void drawLine(int x1, int y1, int x2, int y2, Color color, {bool antialias = false, num thickness = 1}) {
     img.drawLine(
       _decodedBytes!,
       x1: x1,
@@ -71,6 +64,7 @@ class Painter {
         color.toRgbColor().g as int,
         color.toRgbColor().b as int,
       ),
+      thickness: thickness,
     );
   }
 
@@ -102,8 +96,7 @@ class Painter {
       );
 
   /// Write the image as a jpeg to the specified destination.
-  Future<void> writeAsJpeg(String filePath) async =>
-      File(filePath).writeAsBytes(img.encodeJpg(_decodedBytes!));
+  Future<void> writeAsJpeg(String filePath) async => File(filePath).writeAsBytes(img.encodeJpg(_decodedBytes!));
 
   @override
   String toString() => jsonEncode(toJson());
