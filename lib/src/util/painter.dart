@@ -100,7 +100,7 @@ class Painter {
   Future<void> writeAsJpeg(String filePath) async => File(filePath).writeAsBytes(img.encodeJpg(_decodedBytes!));
   Future<Uint8List?> toUnit8List() async {
     if (_decodedBytes != null) {
-      log(_decodedBytes!.getBytes().toString());
+      log("LỖI? ${_decodedBytes!.getBytes().toString()}");
       return _decodedBytes!.getBytes();
     } else {
       return null;
