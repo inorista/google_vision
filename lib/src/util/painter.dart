@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:color/color.dart';
@@ -97,8 +98,13 @@ class Painter {
 
   /// Write the image as a jpeg to the specified destination.
   Future<void> writeAsJpeg(String filePath) async => File(filePath).writeAsBytes(img.encodeJpg(_decodedBytes!));
-  Future<Uint8List> toUnit8List() async {
-    return _decodedBytes!.getBytes();
+  Future<Uint8List?> toUnit8List() async {
+    if (_decodedBytes != null) {
+      log(_decodedBytes!.getBytes().toString());
+      return _decodedBytes!.getBytes();
+    } else {
+      return null;
+    }
   }
 
   @override
