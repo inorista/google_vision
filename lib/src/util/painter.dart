@@ -97,6 +97,9 @@ class Painter {
 
   /// Write the image as a jpeg to the specified destination.
   Future<void> writeAsJpeg(String filePath) async => File(filePath).writeAsBytes(img.encodeJpg(_decodedBytes!));
+  Future<Uint8List> toUnit8List() async {
+    return _decodedBytes!.getBytes();
+  }
 
   @override
   String toString() => jsonEncode(toJson());
