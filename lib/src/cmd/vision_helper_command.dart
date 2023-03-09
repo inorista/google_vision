@@ -39,6 +39,6 @@ abstract class VisionHelper extends Command {
     final requests = AnnotationRequests(
         requests: [AnnotationRequest(image: painter, features: featureList)]);
 
-    return await googleVision.annotate(requests: requests);
+    return await googleVision.annotate(requests);
   }
 }

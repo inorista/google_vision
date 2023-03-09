@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ])
     ]);
 
-    final annotatedResponses = await googleVision.annotate(requests: requests);
+    final annotatedResponses = await googleVision.annotate(requests);
 
     for (var annotatedResponse in annotatedResponses.responses) {
       for (var faceAnnotation in annotatedResponse.faceAnnotations) {

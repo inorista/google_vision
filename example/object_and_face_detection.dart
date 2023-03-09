@@ -21,7 +21,7 @@ void main() async {
   print('checking...');
 
   AnnotatedResponses annotatedResponses =
-      await googleVision.annotate(requests: requests);
+      await googleVision.annotate(requests);
 
   print('done.\n');
 

@@ -34,7 +34,7 @@ class VisionSafeSearchCommand extends VisionHelper {
       )
     ]);
 
-    final annotatedResponses = await googleVision.annotate(requests: requests);
+    final annotatedResponses = await googleVision.annotate(requests);
 
     print(annotatedResponses.responses);
   }
