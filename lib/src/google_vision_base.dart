@@ -57,8 +57,7 @@ class GoogleVision {
   }
 
   /// Run painter detection and annotation for a batch of painters.
-  Future<AnnotatedResponses> annotate({required AnnotationRequests requests}) =>
-      _rest.annotate(_authHeader, contentType, requests.toJson());
+  Future<AnnotatedResponses> annotate(AnnotationRequests requests) => _rest.annotate(_authHeader, contentType, requests.toJson());
 
   /// Draw a box on the supplied [Painter] around detected object using
   /// [NormalizedVertex] values.
