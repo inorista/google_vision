@@ -20,7 +20,7 @@ class JwtGenerator implements TokenGenerator {
   JwtGenerator(
       {required this.credentialsFile, required this.scope, required this.dio})
       : jwtCredentials = JwtCredentials.fromJson({
-          'settings': jsonDecode(File(credentialsFile).readAsStringSync()),
+          'settings': jsonDecode(credentialsFile),
           'scope': scope
         });
 
