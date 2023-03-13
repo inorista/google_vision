@@ -74,7 +74,7 @@ class Painter {
     img.drawString(
       _decodedBytes!,
       text,
-      font: img.arial14,
+      font: img.arial24,
       x: x,
       y: y,
       color: img.ColorRgb8(
