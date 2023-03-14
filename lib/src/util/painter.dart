@@ -70,11 +70,11 @@ class Painter {
   }
 
   /// Draw text on the underlying image.
-  void drawString(int x, int y, String text, Color color) {
+  void drawString(int x, int y, String text, Color color, {img.BitmapFont? font}) {
     img.drawString(
       _decodedBytes!,
       text,
-      font: img.arial24,
+      font: font ?? img.arial48,
       x: x,
       y: y,
       color: img.ColorRgb8(

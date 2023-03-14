@@ -1,6 +1,7 @@
 import 'package:color/color.dart';
 import 'package:dio/dio.dart';
 import 'package:google_vision/google_vision.dart';
+import 'package:image/image.dart' as img;
 
 /// Integrates Google Vision features, including painter labeling, face, logo,
 /// and landmark detection, optical character recognition (OCR), and detection
@@ -95,10 +96,12 @@ class GoogleVision {
   }
 
   /// Draw [text] on the [Painter] at the [x] and [y] position.
-  static void drawText(Painter painter, int x, int y, String text, {String color = 'red'}) => painter.drawString(
+  static void drawText(Painter painter, int x, int y, String text, {String color = 'red', img.BitmapFont? font}) =>
+      painter.drawString(
         x,
         y,
         text,
         RgbColor.name(color),
+        font: font,
       );
 }
