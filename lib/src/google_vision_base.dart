@@ -63,7 +63,7 @@ class GoogleVision {
   /// Draw a box on the supplied [Painter] around detected object using
   /// [NormalizedVertex] values.
   static void drawAnnotationsNormalized(Painter painter, List<NormalizedVertex> vertices,
-      {String color = 'red', int thickness = 3}) {
+      {String hexCode = 'FF2166', int thickness = 3}) {
     final topLeft = vertices.first;
 
     final bottomRight = vertices[2];
@@ -73,14 +73,14 @@ class GoogleVision {
       (topLeft.y * painter.height).toInt(),
       (bottomRight.x * painter.width).toInt(),
       (bottomRight.y * painter.height).toInt(),
-      RgbColor.name(color),
+      HexColor(hexCode),
       thickness: thickness,
     );
   }
 
   /// Draw a box on the supplied [Painter] around the detected object using
   /// [Vertex] values.
-  static void drawAnnotations(Painter painter, List<Vertex> vertices, {String color = 'red', int thickness = 3}) {
+  static void drawAnnotations(Painter painter, List<Vertex> vertices, {String hexCode = 'FF2166', int thickness = 3}) {
     final topLeft = vertices.first;
 
     final bottomRight = vertices[2];
@@ -90,18 +90,18 @@ class GoogleVision {
       topLeft.y.toInt(),
       bottomRight.x.toInt(),
       bottomRight.y.toInt(),
-      RgbColor.name(color),
+      HexColor(hexCode),
       thickness: thickness,
     );
   }
 
   /// Draw [text] on the [Painter] at the [x] and [y] position.
-  static void drawText(Painter painter, int x, int y, String text, {String color = 'red', img.BitmapFont? font}) =>
+  static void drawText(Painter painter, int x, int y, String text, {String hexCode = 'FF2166', img.BitmapFont? font}) =>
       painter.drawString(
         x,
         y,
         text,
-        RgbColor.name(color),
+        HexColor(hexCode),
         font: font,
       );
 }
